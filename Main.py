@@ -10,6 +10,7 @@ from pages.PerformPrintJob import PerformPrintJob
 queue = Queue()
 currentPage = Menu(queue)
 
+# initializing the pages (following the singleton pattern)
 AddJob(queue)
 ViewNextJob(queue)
 ViewAllJobs(queue)
