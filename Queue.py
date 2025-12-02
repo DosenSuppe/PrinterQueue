@@ -65,3 +65,34 @@ class Queue:
             currentNode = currentNode.next
 
         return size
+    
+    def Clear(self) -> None:
+        """Remove all items from the queue."""
+        self.front = None
+        self.rear = None
+    
+    def ToList(self) -> list:
+        """
+        Convert queue to a list (preserving order from front to rear).
+        
+        Returns:
+            list: List of all items in the queue
+        """
+        items = []
+        currentNode = self.front
+        
+        while currentNode is not None:
+            items.append(currentNode.data)
+            currentNode = currentNode.next
+            
+        return items
+    
+    def EnqueueMany(self, items: list) -> None:
+        """
+        Add multiple items to the queue.
+        
+        Args:
+            items: List of items to add to the queue
+        """
+        for item in items:
+            self.Enqueue(item)

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Menu - Printer Queue Tool{% endblock %}
+
+{% block content %}
+<div class="text-center max-w-6xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
+            Main Menu
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 text-lg font-medium">
+            Manage your print jobs efficiently
+        </p>
+    </div>
+    
+    <!-- Queue Status Card -->
+    <div class="mb-12">
+        <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 border border-blue-200/50 dark:border-blue-700/50 rounded-2xl p-6 backdrop-blur-sm">
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 font-medium">
+                        Total Jobs in Queue
+                    </p>
+                    <p class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        {{ QueueSize }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
+        <!-- View Next Job -->
+        <a href="{{ url_for('ViewNext') }}" class="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 hover:from-blue-100 hover:to-indigo-200 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 border border-blue-200/50 dark:border-blue-700/30 rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10">
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">View Next Job</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Preview the next job in the queue</p>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </a>
+
+        <!-- View All Jobs -->
+        <a href="{{ url_for('ViewAll') }}" class="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 hover:from-emerald-100 hover:to-teal-200 dark:hover:from-emerald-900/30 dark:hover:to-teal-900/30 border border-emerald-200/50 dark:border-emerald-700/30 rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/10">
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">View All Jobs</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Browse through all queued jobs</p>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </a>
+
+        <!-- Perform Print Job -->
+        <a href="{{ url_for('PerformJob') }}" class="group relative overflow-hidden bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 hover:from-purple-100 hover:to-pink-200 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 border border-purple-200/50 dark:border-purple-700/30 rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/10">
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Perform Job</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Execute the next print job</p>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </a>
+
+        <!-- Add New Job -->
+        <a href="{{ url_for('AddJob') }}" class="group relative overflow-hidden bg-gradient-to-br from-amber-50 to-orange-100 dark:from-amber-900/20 dark:to-orange-900/20 hover:from-amber-100 hover:to-orange-200 dark:hover:from-amber-900/30 dark:hover:to-orange-900/30 border border-amber-200/50 dark:border-amber-700/30 rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-amber-500/10">
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Add New Job</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Create a new print job</p>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </a>
+
+        <!-- Import/Export -->
+        <a href="{{ url_for('ImportExport') }}" class="group relative overflow-hidden bg-gradient-to-br from-cyan-50 to-sky-100 dark:from-cyan-900/20 dark:to-sky-900/20 hover:from-cyan-100 hover:to-sky-200 dark:hover:from-cyan-900/30 dark:hover:to-sky-900/30 border border-cyan-200/50 dark:border-cyan-700/30 rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/10">
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-sky-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Import/Export</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Import or export queue data</p>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </a>
+    </div>
+</div>
+{% endblock %}

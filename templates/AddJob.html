@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Add Job - Printer Queue Tool{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto">
+    <!-- Page Header -->
+    <div class="text-center mb-8">
+        <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+        </div>
+        <h2 class="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-2">
+            Add New Print Job
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400">Create a new job for the print queue</p>
+    </div>
+    
+    <form method="POST" class="space-y-6">
+        <!-- Modern Input with Floating Label -->
+        <div class="relative">
+            <input 
+                type="text" 
+                id="JobName" 
+                name="JobName" 
+                required
+                placeholder=" "
+                class="peer w-full px-4 py-4 border-2 border-gray-200 dark:border-gray-600 bg-transparent rounded-xl focus:border-amber-500 dark:focus:border-amber-400 focus:outline-none transition-all duration-300 text-gray-900 dark:text-white placeholder-transparent"
+                autofocus
+            >
+            <label 
+                for="JobName" 
+                class="absolute left-4 top-4 text-gray-500 dark:text-gray-400 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:left-3 peer-focus:text-sm peer-focus:text-amber-600 dark:peer-focus:text-amber-400 peer-focus:bg-white dark:peer-focus:bg-slate-800 peer-focus:px-2 peer-valid:-top-2 peer-valid:left-3 peer-valid:text-sm peer-valid:bg-white dark:peer-valid:bg-slate-800 peer-valid:px-2"
+            >
+                Job Name
+            </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-2 gap-4">
+            <button 
+                type="submit" 
+                class="group relative overflow-hidden bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-500/20"
+            >
+                <div class="relative z-10 flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <span>Add Job</span>
+                </div>
+                <div class="absolute inset-0 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+            </button>
+            
+            <a 
+                href="{{ url_for('Index') }}" 
+                class="group relative overflow-hidden bg-gray-500 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500/20 flex items-center justify-center space-x-2"
+            >
+                <div class="relative z-10 flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span>Cancel</span>
+                </div>
+                <div class="absolute inset-0 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+            </a>
+        </div>
+    </form>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+        <a href="{{ url_for('Index') }}" class="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-300 group">
+            <svg class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            <span class="font-medium">Back to Menu</span>
+        </a>
+    </div>
+</div>
+{% endblock %}
